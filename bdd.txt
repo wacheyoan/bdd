@@ -1,0 +1,41 @@
+1) SELECT * from facilities;
+2) SELECT name,member_cost from facilities;
+3) SELECT * from facilities where member_cost > 0;
+4) 
+
+SELECT fac_id, member_cost, monthly_maintenance from facilities 
+where member_cost < monthly_maintenance / 50 
+AND member_cost > 0;
+
+5) SELECT * from facilities where LOWER(name) LIKE LOWER('%Tennis%')
+6) SELECT * from facilities where fac_id IN (1,5);
+7) 
+
+SELECT name,
+	CASE
+		WHEN monthly_maintenance<100 THEN 'cheap'
+		ELSE 'expensive'
+	END as cost
+from facilities;
+
+8) SELECT mem_id, surname,first_name,join_date from members where join_date > '2012-09-01';
+9) SELECT first_name from members order by first_name ASC limit 10;
+10) 
+
+select f.name
+from facilities f
+UNION ALL
+select m.first_name
+from members m
+
+11) 
+
+Select join_date from members where join_date >= (select max(join_date) from members); 
+OU ALORS
+ Select join_date from members order by join_date DESC limit 1;
+
+12) 
+
+Select surname,first_name from members where join_date >= (select max(join_date) from members);
+OU ALORS 
+Select surname,first_name from members order by join_date DESC limit 1;
